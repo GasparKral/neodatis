@@ -1,0 +1,116 @@
+* {
+    -fx-font-family: outfit;
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+}
+
+.root {
+    -color-principal: #7bea8a;
+    -color-secundario: #ffaa88;
+    -color-blanco: #fafafa;
+    -color-negro: #1d211d;
+    -color-gris: #c7c7c7;
+    -color-exito: #88ff00;
+    -color-error: #ff5533;
+}
+
+.titulo {
+    -fx-font-family: 'archivo black';
+    -fx-font-size: 32px;
+}
+
+Button {
+    -fx-background-color: -color-gris;
+    -fx-background-radius: 4px;
+}
+
+.opciones {
+    -fx-background-color: #fafafa2f;
+    -fx-background-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-border-color: -color-blanco;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 0);
+    -fx-text-fill: -color-blanco;
+    transition: all 0.2s ease-in-out;
+}
+
+.opciones:hover {
+    -fx-scale-shape: true;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+AnchorPane {
+    -fx-background-color: radial-gradient(
+        radius 180%,
+        -color-principal,
+        -color-secundario
+    );
+}
+
+TextField {
+    -fx-background-color: #1d211d0d;
+}
+
+Spinner .text-field,
+Spinner .increment-arrow-button,
+Spinner .decrement-arrow-button {
+    -fx-background-color: #1d211d0d;
+    -fx-border-color: none;
+}
+
+Spinner {
+    -fx-border-color: none;
+    -fx-background-color: transparent;
+}
+
+TableView {
+    -fx-background-color: transparent;
+    -fx-background-radius: 4px;
+}
+
+ComboBox {
+    -fx-background-color: #1d211d0d;
+}
+
+ListView {
+    -fx-background-color: #fffbfa;
+    -fx-background-radius: 4px;
+    -fx-border-color: transparent;
+}
+
+.table-column {
+    -fx-border-color: transparent;
+}
+
+.table-column:selected {
+    -fx-background-color: transparent;
+}
+.table-column:hover {
+    -fx-background-color: transparent;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}
+
+.table-view .show-hide-columns-button {
+    -fx-background-color: #49c6e5;
+    -fx-border-color: -fx-box-border;
+    -fx-border-insets: -1 -1 0 0;
+}
+
+.table-view .filler {
+    -fx-border-insets: 10;
+}

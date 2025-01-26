@@ -1,0 +1,8 @@
+* {
+    -fx-text-fill: #fafafa;
+}
+
+.menu_filtros {
+    -fx-background-color: #fafafa2f;
+    -fx-background-radius: 6px;
+}

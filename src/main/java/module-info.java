@@ -1,0 +1,16 @@
+module es.accesoadatos {
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires javafx.base;
+    requires javafx.graphics;
+    requires java.logging;
+    requires neodatis.odb;
+    requires org.json;
+    requires java.sql;
+
+    opens es.accesoadatos to javafx.fxml;
+    opens es.accesoadatos.vistas to javafx.fxml;
+    opens es.accesoadatos.modelos to neodatis.odb;
+
+    exports es.accesoadatos;
+}
