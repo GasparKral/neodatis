@@ -132,6 +132,7 @@ public class ControladorCampos {
         uv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, uvValorInicial, 1));
         stock.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, stockValorInicial, 1));
+
     }
 
     private void constructor() {

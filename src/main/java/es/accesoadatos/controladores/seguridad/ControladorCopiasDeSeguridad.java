@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import es.accesoadatos.Constantes;
 import es.accesoadatos.controladores.controladores_de_modelo.ControladorArticulos;
 import es.accesoadatos.modelos.Articulo;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -32,7 +33,7 @@ public class ControladorCopiasDeSeguridad {
 
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 new java.io.FileOutputStream(Constantes.DIRECCION_COPIAS_DE_SEGURIDAD + fileName))) {
-            oos.writeObject(instancia.articulos);
+            oos.writeObject(instancia.articulos.toArray());
         } catch (IOException io) {
             Logger.getLogger(Constantes.NOMBRE_LOGGER).log(Level.SEVERE,
                     "[ControladorCopiasDeSeguridad.class]: No se ha podido hacer la copia de seguridad",
@@ -46,12 +47,15 @@ public class ControladorCopiasDeSeguridad {
      * 
      * @param archivo el archivo que contiene la copia de seguridad
      */
-    @SuppressWarnings("unchecked")
     public static void restaurarCopiaDeSeguridad(File archivo) {
-
         try (ObjectInputStream ois = new ObjectInputStream(
                 new java.io.FileInputStream(archivo))) {
-            instancia.articulos = (ObservableList<Articulo>) ois.readObject();
+            Object[] array = (Object[]) ois.readObject();
+            ObservableList<Articulo> newList = FXCollections.observableArrayList();
+            for (Object obj : array) {
+                newList.add((Articulo) obj);
+            }
+            instancia.articulos = newList;
         } catch (IOException | ClassNotFoundException e) {
             Logger.getLogger(Constantes.NOMBRE_LOGGER).log(Level.SEVERE,
                     "[ControladorCopiasDeSeguridad.class]: No se ha podido restaurar la copia de seguridad",

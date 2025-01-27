@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import es.accesoadatos.controladores.seguridad.ControladorCopiasDeSeguridad;
 import es.accesoadatos.modelos.auxiliares.ConstructorDeCarpetas;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,9 @@ public class Aplicacion extends Application {
     public void start(Stage stage) throws IOException {
         plataforma = stage;
         escenario = new Scene(loadFXML("inicioSesion"), 640, 480);
+        plataforma.setOnCloseRequest(event -> {
+            ControladorCopiasDeSeguridad.hacerCopiaDeSeguridad();
+        });
         plataforma.setScene(escenario);
         plataforma.show();
     }

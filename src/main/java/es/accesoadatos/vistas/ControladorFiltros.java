@@ -1,6 +1,7 @@
 package es.accesoadatos.vistas;
 
 import es.accesoadatos.controladores.controladores_de_modelo.ControladorArticulos;
+import es.accesoadatos.controladores.infraestructura.ConexionBaseDeDatosNeodatis;
 import es.accesoadatos.modelos.auxiliares.FilterBuilder;
 import es.accesoadatos.vistas.componentes.BotonDeLimite;
 
@@ -56,7 +57,8 @@ public class ControladorFiltros {
 
     @FXML
     public void limpiar() {
-        return;
+        ControladorGestorArticulos.tablaArticulos.getItems()
+                .setAll(ConexionBaseDeDatosNeodatis.getIntancia().consultarTodos());
     }
 
     @SuppressWarnings("unchecked")
@@ -132,10 +134,8 @@ public class ControladorFiltros {
 
         }
 
-        System.out.println(ControladorArticulos.getInstance().articulos.size());
-        System.out.println(filtros.filtrar(ControladorArticulos.getInstance().articulos));
-        
-        System.out.println(ControladorArticulos.getInstance().articulos.size());
+        ControladorGestorArticulos.tablaArticulos.getItems()
+                .setAll(filtros.filtrar(ConexionBaseDeDatosNeodatis.getIntancia().consultarTodos()));
 
     }
 
