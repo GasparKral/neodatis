@@ -47,6 +47,7 @@ public class ControladorFiltros {
         uv.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0, 1));
         stock.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0, 1));
 
+        categoria.getItems().add(null);
         categoria.getItems().addAll(ControladorArticulos.getInstance().getCategorias());
 
         limitePVP.setOnAction(event -> limitePVP.onAction());
