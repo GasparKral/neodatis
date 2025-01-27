@@ -21,7 +21,7 @@ public class FiltersTest {
         List<Articulo> articulos = List.of(
                 new Articulo(1, "Portatil Acer", 500.0, "Informática", 10, 20),
                 new Articulo(2, "Pala Pádel", 100.0, "Deportes", 5, 30));
-        List<Articulo> articulosFiltrados = filtros.filter(articulos);
+        List<Articulo> articulosFiltrados = filtros.filtrar(articulos);
         assertEquals(articulos, articulosFiltrados);
     }
 
@@ -32,7 +32,7 @@ public class FiltersTest {
         List<Articulo> articulos = List.of(
                 new Articulo(1, "Portatil Acer", 500.0, "Informática", 10, 20),
                 new Articulo(2, "Pala Pádel", 100.0, "Deportes", 5, 30));
-        List<Articulo> articulosFiltrados = filtros.filter(articulos);
+        List<Articulo> articulosFiltrados = filtros.filtrar(articulos);
         assertEquals(2, articulosFiltrados.size());
         assertEquals(articulos.get(0), articulosFiltrados.get(0));
     }
@@ -49,7 +49,7 @@ public class FiltersTest {
                 new Articulo(2, "Pala Pádel", 100.0, "Deportes", 5, 30),
                 new Articulo(3, "Caja Lápices", 6.0, "Escritorio", 10, 6),
                 new Articulo(4, "Marcadores", 10.0, "Escritorio", 20, 19));
-        List<Articulo> articulosFiltrados = filtros.filter(articulos);
+        List<Articulo> articulosFiltrados = filtros.filtrar(articulos);
         assertEquals(1, articulosFiltrados.size());
         assertEquals(articulos.get(0), articulosFiltrados.get(0));
     }
@@ -61,7 +61,7 @@ public class FiltersTest {
         List<Articulo> articulos = List.of(
                 new Articulo(1, "Portatil Acer", 500.0, "Informática", 10, 20),
                 new Articulo(2, "Pala Pádel", 100.0, "Deportes", 5, 30));
-        List<Articulo> articulosFiltrados = filtros.filter(articulos);
+        List<Articulo> articulosFiltrados = filtros.filtrar(articulos);
         assertTrue(articulosFiltrados.isEmpty());
     }
 

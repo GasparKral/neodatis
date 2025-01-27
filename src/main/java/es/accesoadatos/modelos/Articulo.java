@@ -1,7 +1,11 @@
 package es.accesoadatos.modelos;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import es.accesoadatos.Constantes;
 import es.accesoadatos.modelos.interfaces.Imprimible;
 
 public class Articulo implements Imprimible, Serializable {
@@ -94,4 +98,5 @@ public class Articulo implements Imprimible, Serializable {
                 .append("\", \"uv\":").append(uv).append(", \"stock\":").append(stock).append("}");
         return sb.toString();
     }
+
 }

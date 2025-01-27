@@ -38,7 +38,7 @@
                      </HBox.margin>
                      <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exportarArticulos" styleClass="opciones" text="EXPORTAR" />
-                        <ComboBox fx:id="formatoDeExportacion" maxWidth="1.7976931348623157E308" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="formatoDeExportacion" maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="exportarSelector" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>

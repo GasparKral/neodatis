@@ -31,7 +31,7 @@ public class ControladorExportaciones {
      * @param entidades la lista de entidades a exportar
      * @param clase     la clase de las entidades
      */
-    public static <T extends Imprimible> void copiaDeSeguridad(FormatoDeArchivo formato, List<T> entidades,
+    public static <T extends Imprimible> void exportar(FormatoDeArchivo formato, List<T> entidades,
             Class<T> clase) {
         switch (formato) {
             case JSON:

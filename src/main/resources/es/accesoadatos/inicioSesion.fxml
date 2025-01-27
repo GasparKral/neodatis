@@ -16,7 +16,7 @@
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="455.0" prefWidth="593.0">
+            <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="455.0" prefWidth="593.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -24,7 +24,6 @@
                 <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="181.0" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="249.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="249.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="153.0" valignment="CENTER" />
               </rowConstraints>
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo" text="INICIO DE SESIÓN" textAlignment="CENTER" wrappingWidth="265.13671875" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -35,26 +34,24 @@
                         <Insets top="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <PasswordField fx:id="clave" alignment="TOP_CENTER" prefHeight="35.0" prefWidth="198.0" promptText="CONTRASEÑA" style="-fx-background-color: white; -fx-border-radius: 50px;" GridPane.rowIndex="2" GridPane.valignment="TOP">
-                     <GridPane.margin>
-                        <Insets left="160.0" right="160.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </PasswordField>
-                  <TextField fx:id="usuario" alignment="CENTER" prefHeight="35.0" prefWidth="198.0" promptText="USUARIO" style="-fx-background-color: white; -fx-border-radius: 50px;" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <GridPane.margin>
-                        <Insets left="160.0" right="160.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-                  <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="20.0" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <VBox alignment="CENTER" spacing="20.0" GridPane.rowIndex="1">
+                     <children>
+                        <TextField fx:id="usuario" alignment="CENTER" maxWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="USUARIO" style="-fx-background-color: white; -fx-border-radius: 50px;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <PasswordField fx:id="clave" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="CONTRASEÑA" style="-fx-background-color: white; -fx-border-radius: 50px;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="20.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
                      <children>
                         <Text fx:id="error" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -color-error; -fx-font-weight: bold;" text="Error:" visible="false" />
                         <Button fx:id="iniciarSesionBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="34.0" prefWidth="200.0" styleClass="opciones" text="INICIAR SESIÓN" textFill="#fdffc5">

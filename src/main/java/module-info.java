@@ -10,7 +10,8 @@ module es.accesoadatos {
 
     opens es.accesoadatos to javafx.fxml;
     opens es.accesoadatos.vistas to javafx.fxml;
-    opens es.accesoadatos.modelos to neodatis.odb;
+    opens es.accesoadatos.vistas.componentes to javafx.fxml;
+    opens es.accesoadatos.modelos to neodatis.odb, javafx.base;
 
     exports es.accesoadatos;
 }

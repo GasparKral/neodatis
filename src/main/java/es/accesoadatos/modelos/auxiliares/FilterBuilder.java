@@ -17,26 +17,26 @@ public class FilterBuilder {
      * Funciones que se encargan de filtrar los artículos. Los resultados se
      * concatenan utilizando el operador l gico AND.
      */
-    private List<Function<Articulo, Boolean>> filters = new ArrayList<>();
+    private List<Function<Articulo, Boolean>> filtros = new ArrayList<>();
 
     /**
      * Crea un constructor de filtros a partir de una lista de funciones.
      * 
-     * @param filters lista de funciones que se encargan de filtrar los artículos.
+     * @param filtros lista de funciones que se encargan de filtrar los artículos.
      */
-    public FilterBuilder(List<Function<Articulo, Boolean>> filters) {
-        this.filters = filters;
+    public FilterBuilder(List<Function<Articulo, Boolean>> filtros) {
+        this.filtros = filtros;
     }
 
     /**
      * Crea un constructor de filtros a partir de un n mero variable de
      * funciones.
      * 
-     * @param filters funciones que se encargan de filtrar los artículos.
+     * @param filtros funciones que se encargan de filtrar los artículos.
      */
-    public FilterBuilder(@SuppressWarnings("unchecked") Function<Articulo, Boolean>... filters) {
-        for (Function<Articulo, Boolean> function : filters) {
-            this.filters.add(function);
+    public FilterBuilder(@SuppressWarnings("unchecked") Function<Articulo, Boolean>... filtros) {
+        for (Function<Articulo, Boolean> function : filtros) {
+            this.filtros.add(function);
         }
     }
 
@@ -46,8 +46,8 @@ public class FilterBuilder {
      * @param filter funci n de filtrado.
      * @return el mismo constructor de filtros.
      */
-    public FilterBuilder addFilter(Function<Articulo, Boolean> filter) {
-        filters.add(filter);
+    public FilterBuilder agregarFiltro(Function<Articulo, Boolean> filter) {
+        filtros.add(filter);
         return this;
     }
 
@@ -57,12 +57,12 @@ public class FilterBuilder {
      * @param articulos lista de artículos a filtrar.
      * @return la lista de artículos filtrados.
      */
-    public List<Articulo> filter(List<Articulo> articulos) {
+    public List<Articulo> filtrar(List<Articulo> articulos) {
 
         List<Articulo> articulosFiltrados = articulos;
 
         // Se iteran los filtros y se van aplicando sobre la lista de artículos
-        for (Function<Articulo, Boolean> filter : filters) {
+        for (Function<Articulo, Boolean> filter : filtros) {
             articulosFiltrados = articulosFiltrados.stream().filter(
                     articulo -> filter.apply(articulo)).toList();
         }

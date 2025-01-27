@@ -74,10 +74,14 @@ ComboBox {
     -fx-background-color: #1d211d0d;
 }
 
-ListView {
-    -fx-background-color: #fffbfa;
+.exportarSelector {
+    -fx-background-color: #fafafa2f;
     -fx-background-radius: 4px;
-    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-color: -color-blanco;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 0);
+    -fx-text-fill: -color-blanco;
 }
 
 .table-column {
