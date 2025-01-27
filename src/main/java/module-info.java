@@ -2,7 +2,7 @@ module es.accesoadatos {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
     requires java.logging;
     requires neodatis.odb;
     requires org.json;

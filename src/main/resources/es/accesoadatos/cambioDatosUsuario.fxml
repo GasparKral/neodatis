@@ -36,7 +36,7 @@
                         <Font size="16.0" />
                      </font>
                   </PasswordField>
-                  <TextField fx:id="nuevoNombreUsuario" alignment="CENTER" editable="false" prefHeight="35.0" prefWidth="198.0" promptText="USUARIO" style="-fx-background-color: white; -fx-border-radius: 50px;" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <TextField fx:id="nuevoNombreUsuario" alignment="CENTER" prefHeight="35.0" prefWidth="198.0" promptText="USUARIO" style="-fx-background-color: white; -fx-border-radius: 50px;" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets left="160.0" right="160.0" />
                      </GridPane.margin>

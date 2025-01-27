@@ -79,7 +79,8 @@ public class ControladorFiltros {
         }
 
         if (valorDenominacion != null && !valorDenominacion.isEmpty()) {
-            filtros.agregarFiltro(articulo -> articulo.getDenominacion().equalsIgnoreCase(valorDenominacion));
+            filtros.agregarFiltro(
+                    articulo -> articulo.getDenominacion().toLowerCase().contains(valorDenominacion.toLowerCase()));
         }
 
         if (valorPVP != null && valorPVP > 0.0) {

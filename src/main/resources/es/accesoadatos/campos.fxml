@@ -59,7 +59,7 @@
                               <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308"
                                  spacing="20.0">
                                  <children>
-                                    <Label text="Caregoría" />
+                                    <Label text="Categoría" />
                                     <TextField fx:id="categoria" />
                                  </children>
                               </HBox>

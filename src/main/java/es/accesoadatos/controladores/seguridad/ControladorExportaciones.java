@@ -51,7 +51,8 @@ public class ControladorExportaciones {
      * @param clase     la clase de las entidades
      */
     private static <T extends Imprimible> void copiaACSV(List<T> entidades, Class<T> clase, File direccion) {
-        try (FileWriter escritor = new FileWriter(direccion.getAbsolutePath() + generadorDeNombre(clase) + ".csv")) {
+        try (FileWriter escritor = new FileWriter(
+                direccion.getAbsolutePath() + "/" + generadorDeNombre(clase) + ".csv")) {
             for (T entidad : entidades) {
                 escritor.write(entidad.aCSV());
             }
@@ -69,8 +70,9 @@ public class ControladorExportaciones {
      * @param clase     la clase de las entidades
      */
     private static <T extends Imprimible> void copiaAJson(List<T> entidades, Class<T> clase, File direccion) {
-        try (FileWriter escritor = new FileWriter(direccion.getAbsolutePath() + generadorDeNombre(clase) + ".json")) {
-            escritor.write("{" + "\"copia de seguridad de " + clase.getName() + "\"");
+        try (FileWriter escritor = new FileWriter(
+                direccion.getAbsolutePath() + "/" + generadorDeNombre(clase) + ".json")) {
+            escritor.write("{" + "\"" + clase.getName() + ":\"");
             for (T entidad : entidades) {
                 escritor.write(entidad.aJSON());
             }
