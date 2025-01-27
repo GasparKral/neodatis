@@ -58,9 +58,10 @@ public class ControladorUsuario {
      */
     public static void modificarUsuario(Usuario nuevosDatos) {
         // Borrar el usuario de la BD
-        new ConexionBaseDeDatosNeodatis().borrar(ControladorUsuario.usuarioLoggeado);
+        ConexionBaseDeDatosNeodatis.getIntancia().borrar(ControladorUsuario.usuarioLoggeado, Usuario.class,
+                "nombre", ControladorUsuario.usuarioLoggeado.getNombre());
         // Insertar el nuevo usuario en la BD
-        new ConexionBaseDeDatosNeodatis().insertar(nuevosDatos);
+        ConexionBaseDeDatosNeodatis.getIntancia().insertar(nuevosDatos);
         // Actualizar el usuario loggeado
         ControladorUsuario.usuarioLoggeado = nuevosDatos;
     }
@@ -84,7 +85,7 @@ public class ControladorUsuario {
      *         contrario
      */
     private static boolean verificarUsuario(String nombre, String clave) {
-        return new ConexionBaseDeDatosNeodatis().consultarUsuario(nombre, clave) != null;
+        return ConexionBaseDeDatosNeodatis.getIntancia().consultarUsuario(nombre, clave) != null;
     }
 
 }

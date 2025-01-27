@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -68,6 +69,25 @@ public class Aplicacion extends Application {
         } catch (IOException e) {
             Logger.getLogger(Constantes.NOMBRE_LOGGER).log(Level.SEVERE,
                     "[Aplicacion.class]: No se ha podido cambiar de escena", e);
+        }
+    }
+
+    public static void abrirNuevaVentana(String fxml, Object controlador, String titulo, double ancho, double alto) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Aplicacion.class.getResource(fxml + ".fxml"));
+            if (controlador != null) {
+                fxmlLoader.setController(controlador);
+            }
+            Parent root = fxmlLoader.load();
+
+            Stage newStage = new Stage();
+            newStage.setTitle(titulo);
+            newStage.setScene(new Scene(root, ancho, alto));
+            newStage.initOwner(plataforma);
+            newStage.initModality(Modality.WINDOW_MODAL); // Opcional, para bloquear la ventana principal
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

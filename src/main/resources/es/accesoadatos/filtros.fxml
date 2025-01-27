@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import es.accesoadatos.vistas.componentes.BotonDeLimite?>
 
-<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308"
+   maxWidth="1.7976931348623157E308"
    spacing="14.0" styleClass="menu_filtros" xmlns="http://javafx.com/javafx/21"
    xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.accesoadatos.vistas.ControladorFiltros">
    <padding>

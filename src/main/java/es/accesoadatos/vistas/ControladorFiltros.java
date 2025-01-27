@@ -3,6 +3,7 @@ package es.accesoadatos.vistas;
 import es.accesoadatos.controladores.controladores_de_modelo.ControladorArticulos;
 import es.accesoadatos.modelos.auxiliares.FilterBuilder;
 import es.accesoadatos.vistas.componentes.BotonDeLimite;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -55,8 +56,7 @@ public class ControladorFiltros {
 
     @FXML
     public void limpiar() {
-        ControladorGestorArticulos.tablaArticulos.getItems().clear();
-        ControladorGestorArticulos.tablaArticulos.getItems().addAll(ControladorArticulos.getInstance().articulos);
+        return;
     }
 
     @SuppressWarnings("unchecked")
@@ -132,9 +132,11 @@ public class ControladorFiltros {
 
         }
 
-        ControladorGestorArticulos.tablaArticulos.getItems().clear();
-        ControladorGestorArticulos.tablaArticulos.getItems()
-                .addAll(filtros.filtrar(ControladorArticulos.getInstance().articulos));
+        System.out.println(ControladorArticulos.getInstance().articulos.size());
+        System.out.println(filtros.filtrar(ControladorArticulos.getInstance().articulos));
+        
+        System.out.println(ControladorArticulos.getInstance().articulos.size());
+
     }
 
 }

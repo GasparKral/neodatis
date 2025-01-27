@@ -43,6 +43,7 @@ public class ControladorInicioSesion {
         } catch (IllegalAccessError e) {
             error.setText(e.getMessage());
             error.setVisible(true);
+            return;
         } catch (Exception e) {
             Logger.getLogger(Constantes.NOMBRE_LOGGER).log(Level.SEVERE,
                     "[ControladorInicioSesion.class]: No se ha podido iniciar sesion", e);

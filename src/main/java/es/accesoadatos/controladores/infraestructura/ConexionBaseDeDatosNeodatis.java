@@ -6,8 +6,10 @@ import java.util.logging.Logger;
 
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
-import org.neodatis.odb.OID;
 import org.neodatis.odb.Objects;
+import org.neodatis.odb.core.query.IQuery;
+import org.neodatis.odb.core.query.criteria.Where;
+import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
 
 import es.accesoadatos.Constantes;
 import es.accesoadatos.modelos.Articulo;
@@ -25,8 +27,17 @@ public class ConexionBaseDeDatosNeodatis {
 
     private static final Logger LOGGER = Logger.getLogger(Constantes.NOMBRE_LOGGER);
 
-    public ConexionBaseDeDatosNeodatis() {
+    private ConexionBaseDeDatosNeodatis() {
         inicializar();
+    }
+
+    private static ConexionBaseDeDatosNeodatis instancia = null;
+
+    public static ConexionBaseDeDatosNeodatis getIntancia() {
+        if (instancia == null) {
+            instancia = new ConexionBaseDeDatosNeodatis();
+        }
+        return instancia;
     }
 
     private ODB baseDeDatos;
@@ -74,23 +85,15 @@ public class ConexionBaseDeDatosNeodatis {
      * @param articulo el Articulo o Usuario a borrar
      */
 
-    public <T> void borrar(T articulo) {
-        abrir();
-        baseDeDatos.delete(articulo);
-        cerrar();
-    }
+    public <T> void borrar(T objeto, Class<T> clazz, String campoUsado, Object valorCampo) {
 
-    /**
-     * Devuelve el OID de un objeto dado.
-     * 
-     * @param dato el objeto del que se quiere obtener el OID
-     * @return el OID del objeto
-     */
-    public <T> OID obtenerID(T dato) {
         abrir();
-        OID id = baseDeDatos.getObjectId(dato);
+        IQuery query = new CriteriaQuery(clazz,
+                Where.equal(campoUsado,
+                        valorCampo));
+
+        baseDeDatos.delete(baseDeDatos.getObjects(query).getFirst());
         cerrar();
-        return id;
     }
 
     /**
@@ -158,8 +161,6 @@ public class ConexionBaseDeDatosNeodatis {
             insertar(articulo8);
 
             LOGGER.info("Datos de ejemplo cargados correctamente.");
-        } else {
-            LOGGER.info("Base de datos inicializada.");
         }
 
         // Cerrar conexión

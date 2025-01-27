@@ -2,6 +2,7 @@ package es.accesoadatos.controladores.seguridad;
 
 import java.util.List;
 import java.util.logging.Logger;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -32,13 +33,13 @@ public class ControladorExportaciones {
      * @param clase     la clase de las entidades
      */
     public static <T extends Imprimible> void exportar(FormatoDeArchivo formato, List<T> entidades,
-            Class<T> clase) {
+            Class<T> clase, File direccion) {
         switch (formato) {
             case JSON:
-                copiaAJson(entidades, clase);
+                copiaAJson(entidades, clase, direccion);
                 break;
             case CSV:
-                copiaACSV(entidades, clase);
+                copiaACSV(entidades, clase, direccion);
                 break;
         }
     }
@@ -49,8 +50,8 @@ public class ControladorExportaciones {
      * @param entidades la lista de entidades a exportar
      * @param clase     la clase de las entidades
      */
-    private static <T extends Imprimible> void copiaACSV(List<T> entidades, Class<T> clase) {
-        try (FileWriter escritor = new FileWriter(generadorDeNombre(clase) + ".csv")) {
+    private static <T extends Imprimible> void copiaACSV(List<T> entidades, Class<T> clase, File direccion) {
+        try (FileWriter escritor = new FileWriter(direccion.getAbsolutePath() + generadorDeNombre(clase) + ".csv")) {
             for (T entidad : entidades) {
                 escritor.write(entidad.aCSV());
             }
@@ -67,8 +68,8 @@ public class ControladorExportaciones {
      * @param entidades la lista de entidades a exportar
      * @param clase     la clase de las entidades
      */
-    private static <T extends Imprimible> void copiaAJson(List<T> entidades, Class<T> clase) {
-        try (FileWriter escritor = new FileWriter(generadorDeNombre(clase) + ".json")) {
+    private static <T extends Imprimible> void copiaAJson(List<T> entidades, Class<T> clase, File direccion) {
+        try (FileWriter escritor = new FileWriter(direccion.getAbsolutePath() + generadorDeNombre(clase) + ".json")) {
             escritor.write("{" + "\"copia de seguridad de " + clase.getName() + "\"");
             for (T entidad : entidades) {
                 escritor.write(entidad.aJSON());

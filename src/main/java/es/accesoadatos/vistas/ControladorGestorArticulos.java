@@ -1,5 +1,6 @@
 package es.accesoadatos.vistas;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.logging.Level;
@@ -10,6 +11,7 @@ import es.accesoadatos.Constantes;
 import es.accesoadatos.controladores.controladores_de_modelo.ControladorArticulos;
 import es.accesoadatos.controladores.seguridad.ControladorExportaciones;
 import es.accesoadatos.modelos.Articulo;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -18,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 
 public class ControladorGestorArticulos {
 
@@ -59,7 +62,7 @@ public class ControladorGestorArticulos {
         tablaArticulos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         VBox.setVgrow(tablaArticulos, javafx.scene.layout.Priority.ALWAYS);
 
-        tablaArticulos.getItems().addAll(intancia.articulos);
+        tablaArticulos.setItems(intancia.articulos);
         tabla.getChildren().add(tablaArticulos);
 
         FXMLLoader filtrosLoader = new FXMLLoader(Aplicacion.class.getResource("filtros.fxml"));
@@ -77,6 +80,7 @@ public class ControladorGestorArticulos {
 
     @FXML
     public void agregarNuevoArticulo() {
+        Aplicacion.abrirNuevaVentana("campos", new ControladorCampos(), "Crear un nuevo Articulo", 700, 500);
     }
 
     @FXML
@@ -87,12 +91,23 @@ public class ControladorGestorArticulos {
 
     @FXML
     public void modificarArticulo() {
+        Articulo articuloSelecionado = tablaArticulos.getSelectionModel().getSelectedItem();
+        Aplicacion.abrirNuevaVentana("campos", new ControladorCampos(
+                articuloSelecionado), "Crear un nuevo Articulo", 700, 500);
     }
 
     @FXML
     public void exportarArticulos() {
-        ControladorExportaciones.FormatoDeArchivo formatoDeExportacion = this.formatoDeExportacion.getValue();
-        ControladorExportaciones.exportar(formatoDeExportacion, tablaArticulos.getItems(), Articulo.class);
+        DirectoryChooser selectionarDirectorio = new DirectoryChooser();
+        selectionarDirectorio.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        File direccion = selectionarDirectorio.showDialog(Aplicacion.plataforma);
+        if (direccion != null) {
+            ControladorExportaciones.FormatoDeArchivo formatoDeExportacion = this.formatoDeExportacion.getValue();
+            ControladorExportaciones.exportar(formatoDeExportacion, tablaArticulos.getItems(), Articulo.class,
+                    direccion);
+        }
+
     }
 
     @FXML

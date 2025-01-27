@@ -19,6 +19,10 @@
     -fx-font-size: 32px;
 }
 
+.error {
+    -fx-text-fill: -color-error;
+}
+
 Button {
     -fx-background-color: -color-gris;
     -fx-background-radius: 4px;
@@ -65,11 +69,6 @@ Spinner {
     -fx-background-color: transparent;
 }
 
-TableView {
-    -fx-background-color: transparent;
-    -fx-background-radius: 4px;
-}
-
 ComboBox {
     -fx-background-color: #1d211d0d;
 }
@@ -84,24 +83,69 @@ ComboBox {
     -fx-text-fill: -color-blanco;
 }
 
-.table-column {
-    -fx-border-color: transparent;
+TableView {
+    -fx-background-color: transparent;
+    -fx-background-radius: 4px;
+    -fx-border-color: -color-blanco;
+    -fx-border-radius: 4px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 0);
+    -fx-font-family: 'outfit';
+    -fx-font-size: 16px;
+    -fx-text-fill: -color-negro;
 }
 
-.table-column:selected {
-    -fx-background-color: transparent;
+TableView .column-header {
+    -fx-background-color: #fafafa2f;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-blanco;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: -color-blanco;
 }
-.table-column:hover {
-    -fx-background-color: transparent;
+
+TableView .column-header:hover {
+    -fx-background-color: derive(-color-principal, -10%);
+}
+
+TableView .cell {
+    -fx-background-color: #fafafa2f;
+    -fx-border-color: transparent;
+    -fx-font-family: 'outfit';
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: -color-negro;
+    -fx-padding: 8px;
+    -fx-border-radius: 4px;
+}
+
+TableView .cell:selected {
+    -fx-background-color: -color-principal;
+    -fx-text-fill: -color-blanco;
+}
+
+TableView .cell:hover {
+    -fx-background-color: -color-secundario;
+    -fx-text-fill: -color-blanco;
+}
+
+TableView .focused {
+    -fx-border-color: -color-principal;
+    -fx-border-width: 2px;
+    -fx-background-insets: 1;
+}
+
+TableColumn {
+    -fx-alignment: CENTER_LEFT;
 }
 
 .table-view > .virtual-flow > .scroll-bar:vertical,
-.table-view > .virtual-flow > .scroll-bar:vertical > .track,
-.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
-.table-view > .virtual-flow > .scroll-bar:horizontal,
-.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
-.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+.table-view > .virtual-flow > .scroll-bar:horizontal {
     -fx-background-color: transparent;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .thumb {
+    -fx-background-color: #fafafadc;
+    -fx-background-radius: 4px;
 }
 
 .table-view > .virtual-flow > .scroll-bar > .increment-button,
@@ -109,12 +153,84 @@ ComboBox {
     -fx-opacity: 0;
 }
 
-.table-view .show-hide-columns-button {
-    -fx-background-color: #49c6e5;
-    -fx-border-color: -fx-box-border;
-    -fx-border-insets: -1 -1 0 0;
+.table-view > .virtual-flow > .scroll-bar:hover > .thumb {
+    -fx-background-color: -color-secundario;
 }
 
-.table-view .filler {
-    -fx-border-insets: 10;
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .track {
+    -fx-background-color: #1d211d0d; /* Fondo sutilmente transparente */
+    -fx-background-radius: 4px;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .thumb {
+    -fx-background-color: #fafafadc;
+    -fx-background-radius: 4px;
+    -fx-padding: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 5, 0, 0, 0);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .thumb:hover {
+    -fx-background-color: -color-secundario; /* Resaltar al hacer hover */
+}
+
+.table-view > .virtual-flow > .scroll-bar > .thumb:pressed {
+    -fx-background-color: -color-principal; /* Color principal al hacer clic */
+}
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0; /* Ocultar botones de incremento/decremento */
+}
+
+.table-view > .virtual-flow > .scroll-bar:hover {
+    -fx-opacity: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical > .thumb,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .thumb {
+    -fx-min-height: 16px;
+    -fx-min-width: 16px;
+}
+
+ComboBox:hover {
+    -fx-background-color: -color-secundario; /* Fondo secundario al hacer hover */
+}
+
+ComboBox:focused {
+    -fx-border-color: -color-principal; /* Borde resaltado cuando está enfocado */
+    -fx-text-fill: -color-negro;
+}
+
+ComboBox .list-view {
+    -fx-background-color: -color-blanco;
+    -fx-control-inner-background: -color-blanco;
+    -fx-border-color: -color-gris;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+ComboBox .list-view .list-cell {
+    -fx-font-family: outfit;
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: -color-negro; /* Texto en negro */
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-padding: 4px 8px;
+}
+
+ComboBox .list-view .list-cell:hover {
+    -fx-background-color: -color-secundario; /* Fondo secundario al hacer hover */
+    -fx-text-fill: -color-blanco; /* Texto en blanco para contraste */
+}
+
+ComboBox .list-view .list-cell:selected {
+    -fx-background-color: -color-principal; /* Fondo principal para selección */
+    -fx-text-fill: -color-blanco; /* Texto en blanco para contraste */
+    -fx-font-weight: bold; /* Negrita para resaltar selección */
 }
